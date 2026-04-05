@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import books from "../data/books";
+import { useSelector } from "react-redux";
 
 function Home() {
   const categories = ["Fiction", "Non-Fiction", "Sci-Fi"];
 
+    const books = useSelector((state) => state.books.list);
   return (
     <div>
       <h1>Welcome to Online Library 📚</h1>
