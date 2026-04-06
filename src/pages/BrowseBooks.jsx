@@ -69,7 +69,7 @@ function BrowseBooks() {
       {/* Empty State */}
       {filtered.length === 0 && (
         <p className="text-center text-gray-500 mt-10">
-          No books found 😔
+          No books found 
         </p>
       )}
     </div>

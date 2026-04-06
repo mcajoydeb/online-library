@@ -10,7 +10,7 @@ function BookDetails() {
   if (!book) {
     return (
       <div className="p-6 text-center">
-        <h2 className="text-2xl font-bold">Book Not Found 😔</h2>
+        <h2 className="text-2xl font-bold">Book Not Found </h2>
         <Link to="/books" className="text-blue-500 mt-4 inline-block">
           Back to Browse
         </Link>

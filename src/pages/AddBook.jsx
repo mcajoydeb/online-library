@@ -45,7 +45,7 @@ function AddBook() {
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-lg p-6">
         {/* Title */}
         <h2 className="text-2xl font-bold text-center mb-6">
-          📚 Add New Book
+           Add New Book
         </h2>
 
         {/* Error */}
