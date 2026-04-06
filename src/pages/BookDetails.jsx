@@ -1,25 +1,21 @@
 import { useParams, Link } from "react-router-dom";
-import books from "../data/books";
+import { useSelector } from "react-redux";
 
 function BookDetails() {
   const { id } = useParams();
+  const books = useSelector((state) => state.books.list);
 
-  // Find book by ID
-  const book = books.find((b) => b.id === parseInt(id));
+  const book = books.find((b) => b.id == id);
 
-  if (!book) {
-    return <h2>Book not found</h2>;
-  }
+  if (!book) return <h2>Not found</h2>;
 
   return (
-    <div>
-      <h2>{book.title}</h2>
-      <p><strong>Author:</strong> {book.author}</p>
-      <p><strong>Category:</strong> {book.category}</p>
-      <p><strong>Rating:</strong> {book.rating}</p>
-      <p><strong>Description:</strong> {book.description}</p>
+    <div className="p-6">
+      <h2 className="text-2xl font-bold">{book.title}</h2>
+      <p>{book.author}</p>
+      <p>{book.description}</p>
 
-      <Link to="/books">⬅ Back to Browse</Link>
+      <Link to="/books">Back</Link>
     </div>
   );
 }

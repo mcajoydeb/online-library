@@ -17,16 +17,14 @@ function AddBook() {
 
   const [error, setError] = useState("");
 
-  // Handle input change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
   };
 
-  // Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
     if (
       !form.title ||
       !form.author ||
@@ -34,65 +32,105 @@ function AddBook() {
       !form.rating ||
       !form.description
     ) {
-      setError("All fields are required");
+      setError("All fields are required ⚠️");
       return;
     }
 
-    const newBook = {
-      id: Date.now(),
-      ...form,
-    };
-
-    dispatch(addBook(newBook));
-
-    // Redirect to browse page
+    dispatch(addBook({ id: Date.now(), ...form }));
     navigate("/books");
   };
 
   return (
-    <div>
-      <h2>Add Book</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white shadow-xl rounded-2xl w-full max-w-lg p-6">
+        {/* Title */}
+        <h2 className="text-2xl font-bold text-center mb-6">
+          📚 Add New Book
+        </h2>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {/* Error */}
+        {error && (
+          <p className="bg-red-100 text-red-600 p-2 rounded mb-4 text-center">
+            {error}
+          </p>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          placeholder="Title"
-          onChange={handleChange}
-        />
-        <br />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Title */}
+          <div>
+            <label className="text-sm font-medium">Book Title</label>
+            <input
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Enter book title"
+              className="w-full mt-1 border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
 
-        <input
-          name="author"
-          placeholder="Author"
-          onChange={handleChange}
-        />
-        <br />
+          {/* Author */}
+          <div>
+            <label className="text-sm font-medium">Author</label>
+            <input
+              name="author"
+              value={form.author}
+              onChange={handleChange}
+              placeholder="Enter author name"
+              className="w-full mt-1 border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
 
-        <input
-          name="category"
-          placeholder="Category"
-          onChange={handleChange}
-        />
-        <br />
+          {/* Category */}
+          <div>
+            <label className="text-sm font-medium">Category</label>
+            <select
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+              className="w-full mt-1 border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none"
+            >
+              <option value="">Select Category</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+            </select>
+          </div>
 
-        <input
-          name="rating"
-          placeholder="Rating"
-          onChange={handleChange}
-        />
-        <br />
+          {/* Rating */}
+          <div>
+            <label className="text-sm font-medium">Rating (1–5)</label>
+            <input
+              type="number"
+              name="rating"
+              value={form.rating}
+              onChange={handleChange}
+              placeholder="Enter rating"
+              min="1"
+              max="5"
+              className="w-full mt-1 border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          onChange={handleChange}
-        />
-        <br />
+          {/* Description */}
+          <div>
+            <label className="text-sm font-medium">Description</label>
+            <textarea
+              name="description"
+              value={form.description}
+              onChange={handleChange}
+              placeholder="Enter description"
+              className="w-full mt-1 border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none"
+              rows="3"
+            />
+          </div>
 
-        <button type="submit">Add Book</button>
-      </form>
+          {/* Button */}
+          <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+            ➕ Add Book
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
