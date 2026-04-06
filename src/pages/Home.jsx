@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const books = useSelector((state) => state.books.list);
-  const categories = ["Fiction", "Non-Fiction"];
+
+  const categories = [...new Set(books.map((book) => book.category))];
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Welcome 📚</h1>
+      <h1 className="text-3xl font-bold mb-4">Welcome</h1>
 
       <div className="flex gap-3 mb-6">
         {categories.map((cat) => (

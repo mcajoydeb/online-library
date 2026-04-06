@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 flex justify-between shadow">
-      <h1 className="text-xl font-bold">📚 Library</h1>
+      <h1 className="text-xl font-bold">Online Library System</h1>
 
       <div className="space-x-6">
         <Link to="/">Home</Link>
