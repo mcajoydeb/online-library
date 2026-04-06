@@ -129,7 +129,7 @@ You can add screenshots here for better presentation.
 
 ---
 
-## 🙌 Author
+## Author
 
 **Joy**
 🔗 https://github.com/mcajoydeb
