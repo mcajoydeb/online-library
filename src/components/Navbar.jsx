@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav style={{ padding: "10px", background: "#eee" }}>
-      <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-      <Link to="/books" style={{ marginRight: "10px" }}>Browse Books</Link>
-      <Link to="/add-book">Add Book</Link>
+    <nav className="bg-blue-600 text-white px-6 py-4 flex justify-between">
+      <h1 className="text-xl font-bold">📚 Library</h1>
+
+      <div className="space-x-4">
+        <Link to="/" className="hover:underline">Home</Link>
+        <Link to="/books" className="hover:underline">Browse</Link>
+        <Link to="/add-book" className="hover:underline">Add Book</Link>
+      </div>
     </nav>
   );
 }
